@@ -60,10 +60,10 @@ class chibRootupler:public edm::EDAnalyzer {
 	TLorentzVector ele_trk0;
 	TLorentzVector ele_trk1;
 
-	TLorentzVector rf1S_chi_p4,rf2S_chi_p4,rf3S_chi_p4;
-	Double_t invm1S,invm2S,invm3S;
-  Double_t probFit1S,probFit2S,probFit3S;
-	Double_t y1S_nsigma,y2S_nsigma,y3S_nsigma;
+	TLorentzVector rf1S_chi_p4;
+	Double_t invm1S;
+  Double_t probFit1S;
+	Double_t y1S_nsigma;
 
 	Double_t ele_mass;
 	Double_t ele_lowerPt_pt;
@@ -144,17 +144,9 @@ isMC_(iConfig.getParameter < bool > ("isMC"))
     chib_tree->Branch("ele_trk1", "TLorentzVector", &ele_trk1);
 
     chib_tree->Branch("rf1S_chi_p4", "TLorentzVector", &rf1S_chi_p4);
-    chib_tree->Branch("rf2S_chi_p4", "TLorentzVector", &rf2S_chi_p4);
-    chib_tree->Branch("rf3S_chi_p4", "TLorentzVector", &rf3S_chi_p4);
     chib_tree->Branch("invm1S",      &invm1S,          "invm1S/D");
-    chib_tree->Branch("invm2S",      &invm2S,          "invm2S/D");
-    chib_tree->Branch("invm3S",      &invm3S,          "invm3S/D");
     chib_tree->Branch("probFit1S",   &probFit1S,       "probFit1S/D");
-    chib_tree->Branch("probFit2S",   &probFit2S,       "probFit2S/D");
-    chib_tree->Branch("probFit3S",   &probFit3S,       "probFit3S/D");
     chib_tree->Branch("y1S_nsigma",  &y1S_nsigma,      "y1S_nsigma/D");
-    chib_tree->Branch("y2S_nsigma",  &y2S_nsigma,      "y2S_nsigma/D");
-    chib_tree->Branch("y3S_nsigma",  &y3S_nsigma,      "y3S_nsigma/D");
 
     chib_tree->Branch("ele_lowerPt_pt",  &ele_lowerPt_pt,  "ele_lowerPt_pt/D");
     chib_tree->Branch("ele_higherPt_pt", &ele_higherPt_pt, "ele_higherPt_pt/D");
@@ -230,8 +222,6 @@ void chibRootupler::analyze(const edm::Event & iEvent, const edm::EventSetup & i
 
   pat::CompositeCandidate chi_cand;
   pat::CompositeCandidate refit1S;
-  pat::CompositeCandidate refit2S;
-  pat::CompositeCandidate refit3S;
 
   edm::Handle<reco::GenParticleCollection> pruned;
   iEvent.getByToken(genCands_,pruned);
