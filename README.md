@@ -1,6 +1,8 @@
 # chi_{b} to Y(1S) + photons
 
-This package is mean to be run using MINIAOD RUN-II
+This package has been created to compare chi_{b}(1P) states by using converted photons and calorimeter photons.
+Calorimeter photons will be added in future.
+This package can be run using MINIAOD RUN-II.
 
 * Setup: (it has being tested on 10_2_25)
 
